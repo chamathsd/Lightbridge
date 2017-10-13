@@ -15,12 +15,12 @@ class Scene
 {
 public:
     /**
-     * Constructor for generating a new scene.
-     *
-     * @param aggregate The aggregate object which stores pointers to
-     *        all other Objects within the scene.
-     * @param lights A list of all lights within the scene.
-     */
+    * Constructor for generating a new scene.
+    *
+    * @param aggregate The aggregate object which stores pointers to
+    *        all other Objects within the scene.
+    * @param lights A list of all lights within the scene.
+    */
     Scene(std::shared_ptr<Object> aggregate,
         const std::vector<std::shared_ptr<Light>> &lights);
 
@@ -34,23 +34,23 @@ private:
     Bounds3f sceneBounds;
 
     /**
-     * Intersect the given ray through the scene. Populates the
-     * SurfaceInteraction structure with information about the
-     * earliest object that is intersected.
-     *
-     * @param ray Ray to intersect.
-     * @param isect SurfaceInteraction structure to detail.
-     * @return Whether the ray intersects a surface or not.
-     */
+    * Intersect the given ray through the scene. Populates the
+    * SurfaceInteraction structure with information about the
+    * earliest object that is intersected.
+    *
+    * @param ray Ray to intersect.
+    * @param isect SurfaceInteraction structure to detail.
+    * @return Whether the ray intersects a surface or not.
+    */
     bool Intersect(const Ray &ray, SurfaceInteraction *isect);
 
     /**
-     * Checks whether the given ray intersects an object within
-     * the scene.
-     *
-     * @param ray Ray to intersect.
-     * @return Whether the ray intersects a surface or not.
-     */
+    * Checks whether the given ray intersects an object within
+    * the scene.
+    *
+    * @param ray Ray to intersect.
+    * @return Whether the ray intersects a surface or not.
+    */
     bool IntersectionExists(const Ray &ray);
 };
 
