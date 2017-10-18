@@ -9,7 +9,7 @@ namespace lightbridge
 *
 * The Integrator is the basic interface from which different
 * rendering methods are implemented. All Integrator subclasses
-* must provide the Render() method.
+* must provide the Render() method. 
 */
 class Integrator
 {
