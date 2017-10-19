@@ -15,10 +15,9 @@ class Integrator
 {
 public:
     /**
-    * Renders the given scene. This method should be implemented by
-    * all subclasses of the Integrator class.
+    * Renders the given scene. Must be implemented by any subclass.
     *
-    * @param scene Scene to render.
+    * @param scene The scene to render.
     */
     virtual void Render(const Scene &scene) = 0;
 };
@@ -51,6 +50,20 @@ public:
     * @param sampler Sampler from which the integrator should stream samples.
     */
     virtual void Preprocess(const Scene &scene, Sampler &sampler) {}
+
+    /**
+    * Incident radiance from the origin of the given ray. Must be
+    * implemented by any subclass.
+    *
+    * @param ray The incident ray being evaluated.
+    * @param scene The scene to render.
+    * @param sampler Sampler to generate samples for light transport equation.
+    * @param allocator Temporary memory allocator for the integrator.
+    * @return Spectrum object containing info about the incident radiance.
+    */
+    virtual Spectrum Li(const RayDifferential &ray, const Scene &scene, Sampler &sampler,
+        MemAllocator &allocator, int depth = 0) const = 0;
+
 protected:
     std::shared_ptr<const Camera> camera;
 private:
