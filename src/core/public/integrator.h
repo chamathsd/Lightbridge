@@ -52,7 +52,7 @@ public:
     virtual void Preprocess(const Scene &scene, Sampler &sampler) {}
 
     /**
-    * Incident radiance from the origin of the given ray. Must be
+    * Incident radiance arriving at the origin of the given ray. Must be
     * implemented by any subclass.
     *
     * @param ray The incident ray being evaluated.

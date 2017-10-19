@@ -51,13 +51,15 @@ void SamplerIntegrator::Render(const Scene &scene)
                 }
                 // TODO: handle bad radiance values
 
-                // TODO: add camera ray's contribution to image
-                // TODO: Free MemAllocator memory from computing image sample value
+                // Update pixels based on camera ray
+                filmTile->AddSample(cameraSample.pFilm, L, rayWeight);
+
+                allocator.Reset();
             }
             while (tileSampler->NextSample());
         }
-        // TODO: merge image tile into Film
+        camera->film->MergeFilmTile(std::move(filmTile));
     }, numTiles);
 
-    // TODO: save final image
+    camera->film->WriteImage();
 }
